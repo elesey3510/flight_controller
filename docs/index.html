@@ -4,8 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>test</h1>
+    <div class="content">
+        <h1 id="header">Project 2025</h1>
+        <div class="notation">
+            <center><h1 class="connect">"Flight Controller"</h1></center>
+            <br>
+            <p class="connect">Доступне рішення для управління дронами-літаками на базі мікроконтролера ATMega та модуля NRF24L01.</p>
+            <br>
+            <p class="connect">Цей проект створений для ентузіастів та хобістів, які хочуть зануритися в світ безпілотних літальних апаратів (дронів), але не бажають витрачати значні кошти на професійні контролери. Наш льотний контролер на основі мікроконтролера ATMega та бездротового модуля NRF24L01 є ідеальним рішенням для початківців, які хочуть спробувати свої сили в розробці та керуванні дронів.</p>
+            <hr>
+            <br>
+            <h2 class="connect">Чому варто обрати наш контроллер?</h2>
+            <ul>
+                <li class="connect"><b>Доступність</b> – Використовує дешеві та поширені компоненти, що робить проект доступним для любителів та хобістів, що прагнуть спробувати розробити свій власний дрон без великих витрат.</li>
+                <li class="connect"><b>Легкість у використанні</b> – Легко налаштовується та підходить навіть для тих, хто лише починає працювати з безпілотними літальними апаратами.</li>
+                <li class="connect"><b>Розширюваність</b> – Модуль можна адаптувати та налаштувати під різні типи дронів, що дає користувачеві гнучкість у виборі платформи для свого проекту.</li>
+                <li class="connect"><b>Простота інтеграції</b> – Легко інтегрується з іншими компонентами, що дозволяє використовувати його для створення власних унікальних конструкцій та систем.</li>
+                <li class="connect"><b>Безліч можливостей для навчання</b> – Цей модуль допомагає освоїти основи роботи з безпілотниками, зокрема програмування, налаштування електроніки та взаємодію з бездротовими модулями.</li>
+            </ul>
+            <hr>
+            <br>
+            <p class="connect">Продукт підходить для студентів, хобістів, а також для тих, хто хоче створити базовий дрон без великих фінансових вкладень, але з можливістю розширення в майбутньому.</p>
+            <p class="connect">З нами ви зможете отримати не лише функціональний контролер, а й розпочати свою подорож у світ безпілотних літальних апаратів. Ми пропонуємо розробку та поставку таких модулів на замовлення, а також консультуємо з налаштування та інтеграції для ваших потреб.</p>
+            
+        </div>
+        <div class="drid">
+            <div class="item">
+                <img src="1.png" alt="">
+            </div>
+            <div class="item">
+                <img src="desdign.png" alt="">
+            </div>
+            <div class="item">
+                <img src="2.png" alt="">
+            </div>
+        </div>
+        
+    </div>
+
+    <img src="pcb.png" alt="Floating Element" class="floating-image" id="floatingImage">
+    
+    <footer>
+        <h2>2025 © BitCrafters</h2>
+        <h1>ROBOCODE</h1>
+        
+    </footer>
+
+    <script>
+         function updateRotation() {
+            let scrollPosition = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+            let rotateX = (1 - scrollPosition) * -15; // Від 0 до -15 градусів
+            let rotateY = (1 - scrollPosition) * 10; // Від 0 до 15 градусів
+            gsap.to("#floatingImage", { rotateX: rotateX, rotateY: rotateY, duration: 0.2 });
+
+             // Зміна розміру для заголовка
+             let fontSize = 6 - (scrollPosition * 4); // Зменшення шрифта від 6 до 2 ем
+             gsap.to("#header", { fontSize: fontSize + "em", duration: 0.2 });
+        }
+
+        window.addEventListener("scroll", updateRotation);
+
+        window.addEventListener("load", () => {
+            gsap.set("#floatingImage", { rotateX: -15, rotateY: 15 });
+            gsap.to("#floatingImage", { y: "+=10", repeat: -1, yoyo: true, duration: 2, ease: "power1.inOut" });
+        });
+    </script>
 </body>
 </html>
